@@ -29,7 +29,7 @@ const Login = () => {
       if (data.error) {
         throw new Error(data.error);
       }
-      history.push('/jobs');
+      history.push('/');
     } catch (error) {
       switch (error.response.status) {
         case 401:
