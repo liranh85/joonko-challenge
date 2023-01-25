@@ -5,6 +5,14 @@
   padding: 10px 30px;
 }
 
-.job-name {
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
+}
+
+.job-main-details {
+  display: flex;
+  gap: 10px;
 }
