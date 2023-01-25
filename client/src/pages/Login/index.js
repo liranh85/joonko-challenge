@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-
+import { useHistory } from 'react-router-dom';
 import Logo from 'assets/logo.svg';
-
 import './index.scss';
+import axios from 'axios';
 
 const formFields = [
   { type: 'email', name: 'email', placeholder: 'Enter work email' },
@@ -10,14 +10,40 @@ const formFields = [
 ];
 
 const Login = () => {
+  const history = useHistory();
   const [values, setValues] = useState({
     [formFields[0].name]: '',
     [formFields[1].name]: '',
   });
+  const [error, setError] = useState(null);
 
-  const onChangeInput = (e) => {};
+  const onChangeInput = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
 
-  const onSubmitForm = async (e) => {};
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+    setError(null);
+    try {
+      const data = await axios.post('/users/login', values);
+      if (data.error) {
+        throw new Error(data.error);
+      }
+      history.push('/jobs');
+    } catch (error) {
+      switch (error.response.status) {
+        case 401:
+        case 404:
+          setError(
+            'An error occurred, please check your credentials and try again.'
+          );
+          break;
+        default:
+          setError('An unknown error occurred, please try again later.');
+          break;
+      }
+    }
+  };
 
   return (
     <div className="login">
@@ -40,7 +66,8 @@ const Login = () => {
           ))}
           <button type="submit">Log in</button>
         </form>
-        <span className="error-msg"></span>
+        {/* TODO: prevent jump when displaying/hiding error message */}
+        <span className="error-msg">{error}</span>
       </div>
     </div>
   );
