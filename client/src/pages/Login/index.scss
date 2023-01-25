@@ -12,7 +12,7 @@
     align-items: center;
     width: 70%;
     max-width: 50rem;
-    border: 1px solid #7B3FF2;
+    border: 1px solid #7b3ff2;
     border-radius: 4px;
     padding: 5rem 0;
 
@@ -25,7 +25,7 @@
       > span {
         text-align: center;
         font-weight: 600;
-        color: #7B3FF2;
+        color: #7b3ff2;
       }
 
       > .title {
@@ -42,16 +42,17 @@
       flex-wrap: wrap;
       gap: 1rem;
 
-      > input, button {
+      > input,
+      button {
         padding: 0.5rem 0.3rem;
-        border: 1px solid #7B3FF2;
+        border: 1px solid #7b3ff2;
         border-radius: 4px;
         outline: none;
       }
 
       > button {
-        background-color: #7B3FF2;
-        color: #FFFFFF;
+        background-color: #7b3ff2;
+        color: #ffffff;
         cursor: pointer;
       }
     }
@@ -60,7 +61,7 @@
       margin-top: 1rem;
       font-weight: 600;
       font-size: 0.9rem;
-      color: #DE4763;
+      color: #de4763;
     }
   }
 }
